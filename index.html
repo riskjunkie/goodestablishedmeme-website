@@ -280,6 +280,26 @@ section { padding: 60px 20px; }
 .social-card .sdesc { font-size: 9px; }
 .coming-soon-tag { font-size: 8px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); border-radius: 10px; padding: 2px 7px; color: var(--gold); letter-spacing: 1px; }
 
+/* MC TRACKER BAR */
+.mc-bar {
+  width: 100%; background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0; overflow: hidden;
+}
+.mc-stat {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 16px; border-right: 1px solid var(--border);
+  font-size: 10px; color: var(--muted);
+}
+.mc-stat:last-child { border-right: none; }
+.mc-stat .mc-label { font-size: 8px; letter-spacing: 1px; text-transform: uppercase; }
+.mc-stat .mc-val { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 1px; color: var(--text); }
+.mc-stat .mc-val.up { color: var(--gem); }
+.mc-stat .mc-val.down { color: var(--rug); }
+.mc-loading { opacity: 0.4; animation: mcpulse 1.5s ease-in-out infinite; }
+@keyframes mcpulse { 0%,100%{opacity:0.4} 50%{opacity:0.8} }
+
 /* FOOTER */
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px 20px; text-align: center; }
 .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--gem); opacity: 0.5; margin-bottom: 8px; }
@@ -299,16 +319,25 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <nav class="site-nav">
   <div class="nav-logo">GEM<span>💎</span>COIN</div>
   <ul class="nav-links">
-    <li><a href="#chart">Chart</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#tokenomics">Tokens</a></li>
     <li><a href="#game">Play</a></li>
     <li><a href="#gemfinder">Bot</a></li>
+    <li><a href="#chart">Chart</a></li>
   </ul>
 </nav>
 
 <div class="ticker-wrap">
   <div class="ticker-inner" id="mainTicker"></div>
+</div>
+
+<!-- MC TRACKER -->
+<div class="mc-bar" id="mcBar">
+  <div class="mc-stat"><span class="mc-label">PRICE</span><span class="mc-val mc-loading" id="mcPrice">———</span></div>
+  <div class="mc-stat"><span class="mc-label">MKT CAP</span><span class="mc-val mc-loading" id="mcCap">———</span></div>
+  <div class="mc-stat"><span class="mc-label">24H</span><span class="mc-val mc-loading" id="mcChange">———</span></div>
+  <div class="mc-stat"><span class="mc-label">VOL 24H</span><span class="mc-val mc-loading" id="mcVol">———</span></div>
+  <div class="mc-stat"><span class="mc-label">LIQ</span><span class="mc-val mc-loading" id="mcLiq">———</span></div>
 </div>
 
 <!-- HERO -->
@@ -332,16 +361,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     <a href="https://dexscreener.com/solana/2QruGDNEcbvojXbCBmBzPwN6fsTxaqyLptRrcNFvpump?id=tg1bnknu" target="_blank" class="hero-social-link" title="DexScreener">📊 DexScreener</a>
     <span class="hero-social-divider">·</span>
     <span class="hero-social-link muted" title="Coming soon">🐦 Twitter <span class="coming-soon-tag">SOON</span></span>
-  </div>
-</section>
-
-<!-- CHART -->
-<section id="chart" style="padding:0 20px 60px; background:var(--bg);">
-  <div style="max-width:900px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-    <div id="dexscreener-embed" style="position:relative;width:100%;padding-bottom:125%;">
-      <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style>
-      <iframe src="https://dexscreener.com/solana/GDTQXWdWRjeCK5dcnqDoXEC9LDCBMnFeavsgBeneEhBg?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
-    </div>
   </div>
 </section>
 
@@ -541,6 +560,19 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
 </section>
 
+<!-- CHART -->
+<section id="chart" style="padding:60px 20px; background:var(--bg);">
+  <div class="section-label">Live Price</div>
+  <h2 class="section-title">THE <span style="color:var(--gem)">CHART</span></h2>
+  <p class="section-sub">Full price action. For the degens who need to stare at candles.</p>
+  <div style="max-width:900px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+    <div id="dexscreener-embed" style="position:relative;width:100%;padding-bottom:125%;">
+      <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style>
+      <iframe src="https://dexscreener.com/solana/GDTQXWdWRjeCK5dcnqDoXEC9LDCBMnFeavsgBeneEhBg?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- LINKS -->
 <section class="links-section" id="links">
   <div class="section-label">Community</div>
@@ -571,7 +603,57 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </footer>
 
 <script>
-// TICKERS
+// MC TRACKER
+function fmtUsd(n) {
+  if (!n) return '—';
+  if (n >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+  if (n >= 1e3) return '$' + (n/1e3).toFixed(1) + 'K';
+  return '$' + n.toFixed(2);
+}
+function fmtPrice(n) {
+  if (!n) return '—';
+  const f = parseFloat(n);
+  if (f < 0.000001) return '$' + f.toExponential(2);
+  if (f < 0.01) return '$' + f.toFixed(6);
+  return '$' + f.toFixed(4);
+}
+async function fetchMC() {
+  try {
+    const res = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/GDTQXWdWRjeCK5dcnqDoXEC9LDCBMnFeavsgBeneEhBg');
+    const data = await res.json();
+    const p = data.pair;
+    if (!p) return;
+
+    const price = document.getElementById('mcPrice');
+    const cap = document.getElementById('mcCap');
+    const change = document.getElementById('mcChange');
+    const vol = document.getElementById('mcVol');
+    const liq = document.getElementById('mcLiq');
+
+    price.textContent = fmtPrice(p.priceUsd);
+    price.classList.remove('mc-loading');
+
+    cap.textContent = fmtUsd(p.marketCap || p.fdv);
+    cap.classList.remove('mc-loading');
+
+    const ch = p.priceChange?.h24;
+    if (ch !== undefined) {
+      const pos = parseFloat(ch) >= 0;
+      change.textContent = (pos ? '+' : '') + parseFloat(ch).toFixed(1) + '%';
+      change.className = 'mc-val ' + (pos ? 'up' : 'down');
+    }
+
+    vol.textContent = fmtUsd(p.volume?.h24);
+    vol.classList.remove('mc-loading');
+
+    liq.textContent = fmtUsd(p.liquidity?.usd);
+    liq.classList.remove('mc-loading');
+
+  } catch(e) { /* silently fail, keep loading state */ }
+}
+fetchMC();
+setInterval(fetchMC, 30000);
 const tickerMessages = ['$GEM +420.69%','💎 DIAMOND HANDS','🚀 TO THE MOON','$GEM STILL EARLY','📈 SEND IT','🌕 MOONBOUND','💰 STAY SOLVENT','⚠️ RUG RISK HIGH','$GEM GOOD ESTABLISHED MEME','🔥 DEGEN SEASON','💎 HOLD THE LINE','🎯 ALPHA DETECTED','$GEM NOT A RUG','📊 100X POTENTIAL'];
 function fillTicker(id) {
   const el = document.getElementById(id);
