@@ -323,7 +323,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     <li><a href="#tokenomics">Tokens</a></li>
     <li><a href="#game">Play</a></li>
     <li><a href="#gemfinder">Bot</a></li>
-    <li><a href="#chart">Chart</a></li>
   </ul>
 </nav>
 
@@ -560,19 +559,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
 </section>
 
-<!-- CHART -->
-<section id="chart" style="padding:60px 20px; background:var(--bg);">
-  <div class="section-label">Live Price</div>
-  <h2 class="section-title">THE <span style="color:var(--gem)">CHART</span></h2>
-  <p class="section-sub">Full price action. For the degens who need to stare at candles.</p>
-  <div style="max-width:900px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-    <div id="dexscreener-embed" style="position:relative;width:100%;padding-bottom:125%;">
-      <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style>
-      <iframe src="https://dexscreener.com/solana/GDTQXWdWRjeCK5dcnqDoXEC9LDCBMnFeavsgBeneEhBg?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15" scrolling="no" tabindex="-1"></iframe>
-    </div>
-  </div>
-</section>
-
 <!-- LINKS -->
 <section class="links-section" id="links">
   <div class="section-label">Community</div>
@@ -603,16 +589,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </footer>
 
 <script>
-// Prevent iframe focus stealing on load
-window.addEventListener('load', () => { window.scrollTo(0, 0); });
-document.addEventListener('DOMContentLoaded', () => { window.scrollTo(0, 0); });
-// Keep killing any scroll attempts for the first 3 seconds after load
-let blockScroll = true;
-const savedPos = { x: 0, y: 0 };
-window.addEventListener('scroll', () => {
-  if (blockScroll) window.scrollTo(savedPos.x, savedPos.y);
-}, { passive: false });
-setTimeout(() => { blockScroll = false; }, 3000);
+
 
 // MC TRACKER
 function fmtUsd(n) {
