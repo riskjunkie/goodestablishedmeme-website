@@ -605,6 +605,14 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <script>
 // Prevent iframe focus stealing on load
 window.addEventListener('load', () => { window.scrollTo(0, 0); });
+document.addEventListener('DOMContentLoaded', () => { window.scrollTo(0, 0); });
+// Keep killing any scroll attempts for the first 3 seconds after load
+let blockScroll = true;
+const savedPos = { x: 0, y: 0 };
+window.addEventListener('scroll', () => {
+  if (blockScroll) window.scrollTo(savedPos.x, savedPos.y);
+}, { passive: false });
+setTimeout(() => { blockScroll = false; }, 3000);
 
 // MC TRACKER
 function fmtUsd(n) {
