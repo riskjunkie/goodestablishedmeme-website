@@ -568,7 +568,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   <div style="max-width:900px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
     <div id="dexscreener-embed" style="position:relative;width:100%;padding-bottom:125%;">
       <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style>
-      <iframe src="https://dexscreener.com/solana/GDTQXWdWRjeCK5dcnqDoXEC9LDCBMnFeavsgBeneEhBg?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
+      <iframe src="https://dexscreener.com/solana/GDTQXWdWRjeCK5dcnqDoXEC9LDCBMnFeavsgBeneEhBg?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15" scrolling="no" tabindex="-1"></iframe>
     </div>
   </div>
 </section>
@@ -603,6 +603,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </footer>
 
 <script>
+// Prevent iframe focus stealing on load
+window.addEventListener('load', () => { window.scrollTo(0, 0); });
+
 // MC TRACKER
 function fmtUsd(n) {
   if (!n) return '—';
