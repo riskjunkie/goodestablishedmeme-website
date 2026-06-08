@@ -1,89 +1,147 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$GEM - Good Established Meme</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        
-        body {
-            font-family: 'Press Start 2P', system-ui;
-        }
-        
-        .neon-text {
-            text-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 40px #00f5ff;
-        }
-        
-        .hero-bg {
-            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 70%);
-        }
-        
-        .logo-glow {
-            filter: drop-shadow(0 0 30px #00f5ff);
-        }
-    </style>
-</head>
-<body class="bg-black text-white overflow-x-hidden">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Good Established Meme ($GEM)</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gem:#00FFB2;
+    --gem-dark:#00CC8F;
+    --rug:#FF3B5C;
+    --gold:#FFD700;
+    --bg:#0A0E1A;
+    --surface:#111827;
+    --surface2:#1A2235;
+    --border:#2A3550;
+    --text:#E8F0FF;
+    --muted:#6B7FA8;
+    --overlay:rgba(10,14,26,.92);
+  }
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-cyan-500/30">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="../weblogo.png" class="w-10 h-10 logo-glow rounded-full" alt="$GEM">
-                <span class="text-2xl font-bold tracking-widest neon-text">$GEM</span>
-            </div>
-            <div class="flex gap-8 text-sm">
-                <a href="#about" class="hover:text-cyan-400">LORE</a>
-                <a href="#token" class="hover:text-cyan-400">TOKEN</a>
-                <a href="../" class="hover:text-cyan-400">PLAY GAME</a>
-            </div>
-            <a href="https://solscan.io/token/2QruGDNEcbvojXbCBmBzPwN6fsTxaqyLptRrcNFvpump" 
-               target="_blank"
-               class="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-2 rounded font-bold text-sm">
-                BUY $GEM
-            </a>
-        </div>
-    </nav>
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html, body { width:100%; min-height:100%; }
+  body {
+    background:
+      radial-gradient(circle at top, rgba(0,255,178,.09), transparent 35%),
+      radial-gradient(circle at bottom right, rgba(255,215,0,.07), transparent 30%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Space Mono', monospace;
+    overflow-x:hidden;
+    user-select:none;
+  }
 
-    <!-- Hero -->
-    <section class="hero-bg min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <h1 class="text-7xl md:text-8xl font-black tracking-tighter neon-text">$GEM</h1>
-                <p class="text-5xl font-bold text-cyan-300">Good Established Meme</p>
-                
-                <p class="max-w-md text-lg text-gray-300">
-                    The trenches need to focus on <span class="text-cyan-400 font-bold">good established memes</span> — not every new shiny thing.
-                </p>
+  .app {
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
 
-                <div class="flex gap-4">
-                    <a href="../" target="_blank"
-                       class="bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-8 py-4 rounded-xl font-bold flex items-center gap-3">
-                        <i class="fa-solid fa-gamepad"></i> PLAY GEMSWEeper
-                    </a>
-                    <a href="https://solscan.io/token/2QruGDNEcbvojXbCBmBzPwN6fsTxaqyLptRrcNFvpump" 
-                       target="_blank"
-                       class="border border-cyan-400 px-8 py-4 rounded-xl font-bold">
-                        CONTRACT
-                    </a>
-                </div>
+  .header {
+    position:sticky;
+    top:0;
+    z-index:30;
+    width:100%;
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:1px solid var(--border);
+    background:rgba(17,24,39,.94);
+    backdrop-filter:blur(10px);
+  }
 
-                <div class="font-mono text-sm">
-                    <span class="text-cyan-400">CA:</span><br>
-                    <span onclick="navigator.clipboard.writeText('2QruGDNEcbvojXbCBmBzPwN6fsTxaqyLptRrcNFvpump')" 
-                          class="cursor-pointer hover:text-cyan-400">2QruGDNEcbvojXbCBmBzPwN6fsTxaqyLptRrcNFvpump</span>
-                </div>
-            </div>
+  .brand {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+  }
 
-            <div class="flex justify-center">
-                <img src="../weblogo.png" class="w-full max-w-lg logo-glow" alt="$GEM Logo">
-            </div>
-        </div>
-    </section>
+  .logo {
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:linear-gradient(145deg, var(--surface2), #0f172a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Bebas Neue', sans-serif;
+    color:var(--gem);
+    letter-spacing:1px;
+    font-size:20px;
+    box-shadow:0 0 24px rgba(0,255,178,.08);
+    flex-shrink:0;
+  }
 
-    <!-- More sections can be added below... -->
-</body>
-</html>
+  .brand-copy { min-width:0; }
+  .title {
+    font-family:'Bebas Neue', sans-serif;
+    font-size:26px;
+    letter-spacing:2px;
+    line-height:1;
+    color:var(--gem);
+    white-space:nowrap;
+  }
+  .title span { color:var(--gold); }
+  .sub {
+    font-size:10px;
+    color:var(--muted);
+    margin-top:4px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .pill {
+    border:1px solid rgba(0,255,178,.22);
+    color:var(--gem);
+    background:rgba(0,255,178,.06);
+    padding:8px 10px;
+    border-radius:999px;
+    font-size:10px;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  .ticker {
+    border-bottom:1px solid rgba(0,255,178,.15);
+    background:rgba(0,255,178,.05);
+    overflow:hidden;
+    height:26px;
+    display:flex;
+    align-items:center;
+  }
+  .ticker-inner {
+    white-space:nowrap;
+    display:flex;
+    gap:34px;
+    padding:0 18px;
+    animation:scroll 20s linear infinite;
+    font-size:10px;
+    color:var(--gem);
+  }
+  @keyframes scroll {
+    from { transform:translateX(0); }
+    to { transform:translateX(-50%); }
+  }
+
+  .hero {
+    padding:18px 16px 10px;
+    display:grid;
+    gap:14px;
+  }
+
+  .hero-card,
+  .section,
+  .board-frame 
