@@ -31,25 +31,13 @@
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: 'Space Mono', monospace; overflow-x: hidden; }
 
-/* NAV */
-.site-nav {
-  position: fixed; top: 0; width: 100%; z-index: 200;
-  background: rgba(10,14,26,0.92); backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 20px;
-}
-.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--gem); text-shadow: 0 0 20px rgba(0,255,178,0.4); }
-.nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 20px; list-style: none; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.15s; }
-.nav-links a:hover { color: var(--gem); }
+
 
 /* TICKER */
 .ticker-wrap {
   width: 100%; background: rgba(0,255,178,0.06);
   border-bottom: 1px solid rgba(0,255,178,0.15);
-  overflow: hidden; height: 26px; display: flex; align-items: center; margin-top: 45px;
+  overflow: hidden; height: 26px; display: flex; align-items: center; margin-top: 0;
 }
 .ticker-inner {
   display: flex; gap: 40px; white-space: nowrap;
@@ -62,7 +50,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Space Mono', mon
 .hero {
   min-height: 100vh; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 80px 20px 32px; text-align: center; position: relative; overflow: hidden;
+  padding: 40px 20px 32px; text-align: center; position: relative; overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
@@ -306,25 +294,14 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .footer-disc { font-size: 9px; color: var(--muted); max-width: 400px; margin: 0 auto; line-height: 1.7; opacity: 0.6; }
 
 @media (min-width: 768px) {
-  .hero { padding: 120px 40px 60px; }
+  .hero { padding: 80px 40px 60px; }
   .hero-logo { width: 340px; }
   section { padding: 80px 40px; }
   .game-lb-section { padding: 80px 40px; }
-  .site-nav { padding: 12px 40px; }
 }
 </style>
 </head>
 <body>
-
-<nav class="site-nav">
-  <div class="nav-logo">GEM<span>💎</span>COIN</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#tokenomics">Tokens</a></li>
-    <li><a href="#game">Play</a></li>
-    <li><a href="#gemfinder">Bot</a></li>
-  </ul>
-</nav>
 
 <div class="ticker-wrap">
   <div class="ticker-inner" id="mainTicker"></div>
@@ -642,7 +619,7 @@ async function fetchMC() {
 }
 fetchMC();
 setInterval(fetchMC, 30000);
-const tickerMessages = ['$GEM +420.69%','💎 DIAMOND HANDS','🚀 TO THE MOON','$GEM STILL EARLY','📈 SEND IT','🌕 MOONBOUND','💰 STAY SOLVENT','⚠️ RUG RISK HIGH','$GEM GOOD ESTABLISHED MEME','🔥 DEGEN SEASON','💎 HOLD THE LINE','🎯 ALPHA DETECTED','$GEM NOT A RUG','📊 100X POTENTIAL'];
+const tickerMessages = ['$GEM 💎 GOOD ESTABLISHED MEME','🚀 EARLY IS AN UNDERSTATEMENT','💰 DIAMOND HANDS PRINT','📈 THE CHART ONLY GOES ONE WAY','🌕 MOON IS THE MINIMUM','💎 CONVICTION OVER SPECULATION','$GEM · THE ALPHA YOUR PORTFOLIO NEEDS','🔥 DEGEN SZN IS ETERNAL','📊 FUNDAMENTALS: VIBES AND WINS','🚀 IF YOU KNOW YOU KNOW','$GEM · GOOD ESTABLISHED MEME','💎 HOLD SOMETHING WORTH HOLDING','⭐ THE GEM OTHERS SLEPT ON','📈 PATIENCE IS THE TRADE','$GEM · BUILT DIFFERENT'];
 function fillTicker(id) {
   const el = document.getElementById(id);
   if (!el) return;
