@@ -84,13 +84,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Space Mono', mon
 .hero-logo-wrap { position: relative; margin-bottom: 16px; }
 .hero-logo {
   width: min(220px, 55vw); height: auto;
-  mix-blend-mode: screen;
-  filter: contrast(2.2) saturate(2) drop-shadow(0 0 40px rgba(0,255,178,0.55)) drop-shadow(0 0 80px rgba(0,255,178,0.25));
+  filter: drop-shadow(0 0 40px rgba(0,255,178,0.55)) drop-shadow(0 0 80px rgba(0,255,178,0.25));
   animation: logoPulse 3s ease-in-out infinite;
 }
 @keyframes logoPulse {
-  0%, 100% { filter: contrast(2.2) saturate(2) drop-shadow(0 0 40px rgba(0,255,178,0.55)) drop-shadow(0 0 80px rgba(0,255,178,0.25)); }
-  50% { filter: contrast(2.2) saturate(2) drop-shadow(0 0 60px rgba(0,255,178,0.75)) drop-shadow(0 0 110px rgba(0,255,178,0.4)); }
+  0%, 100% { filter: drop-shadow(0 0 40px rgba(0,255,178,0.55)) drop-shadow(0 0 80px rgba(0,255,178,0.25)); }
+  50% { filter: drop-shadow(0 0 60px rgba(0,255,178,0.75)) drop-shadow(0 0 110px rgba(0,255,178,0.4)); }
 }
 .hero-tagline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(22px, 6vw, 38px); letter-spacing: 4px; color: var(--gem); margin-bottom: 6px; text-shadow: 0 0 30px rgba(0,255,178,0.4); }
 .hero-tagline-sub { font-size: 12px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
