@@ -38,12 +38,12 @@ body::before {
   background-repeat: repeat-y;
   background-size: 420px auto;
   background-position: center top;
-  opacity: 0.05;
-  filter: blur(2px) saturate(1.8) brightness(0.22);
+  opacity: 0.07;
+  filter: blur(2px) saturate(1.6);
   mix-blend-mode: screen;
 }
 @media (max-width: 600px) {
-  body::before { background-size: 100vw auto; opacity: 0.045; }
+  body::before { background-size: 100vw auto; opacity: 0.06; }
 }
 @media (min-width: 900px) {
   body::before {
@@ -51,7 +51,7 @@ body::before {
     background-repeat: repeat-y, repeat-y;
     background-size: 280px auto, 280px auto;
     background-position: left top, right top;
-    opacity: 0.05;
+    opacity: 0.07;
   }
 }
 body > * { position: relative; z-index: 1; }
@@ -84,6 +84,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Space Mono', mon
 .hero-logo-wrap { position: relative; margin-bottom: 16px; }
 .hero-logo {
   width: min(220px, 55vw); height: auto;
+  mix-blend-mode: screen;
   filter: drop-shadow(0 0 40px rgba(0,255,178,0.55)) drop-shadow(0 0 80px rgba(0,255,178,0.25));
   animation: logoPulse 3s ease-in-out infinite;
 }
